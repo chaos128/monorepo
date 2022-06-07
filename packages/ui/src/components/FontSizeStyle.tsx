@@ -1,10 +1,7 @@
 import React from "react";
 import { PC_BREAKPOINT } from "../constants";
-import { useWindowWidth } from "../hooks/useWindowWidth";
 
-function FontSizeScript() {
-  const { windowWidth } = useWindowWidth();
-
+function FontSizeScript({ windowWidth }: { windowWidth: number }) {
   let fontSize;
   if (windowWidth < PC_BREAKPOINT) {
     fontSize = Math.round(1000 * (windowWidth / 375)) / 100;
