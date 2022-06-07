@@ -1,0 +1,50 @@
+{
+  "name": "@nosearch/ui",
+  "version": "2.1.9",
+  "private": true,
+  "main": "./src/index.ts",
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "storybook:export": "rm -rf docs && build-storybook && mv storybook-static docs",
+    "build": "rm -rf lib && rollup -c",
+    "release-patch": "yarn build && npm version patch && git push && git push --tags",
+    "generate": "node ./util/create-component",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@changesets/cli": "^2.20.0",
+    "@storybook/addon-actions": "^6.4.10",
+    "@storybook/addon-essentials": "^6.4.10",
+    "@storybook/addon-links": "^6.4.10",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/react": "^6.4.10",
+    "@tailwindcss/line-clamp": "^0.3.1",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@types/jest": "^27.4.0",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.14",
+    "@types/react-stickynode": "^4.0.0",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "autoprefixer": "^10.4.2",
+    "babel-loader": "^8.2.3",
+    "html-webpack-plugin": "^5.5.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.4.7",
+    "postcss": "^8.4.6",
+    "sass": "^1.51.0",
+    "sass-loader": "^10",
+    "tailwind": "^4.0.0",
+    "tailwindcss": "^3.0.17",
+    "ts-jest": "^27.1.2",
+    "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "react-device-detect": "^2.1.2",
+    "react-stickynode": "^4.0.0",
+    "react-youtube": "^9.0.2"
+  }
+}

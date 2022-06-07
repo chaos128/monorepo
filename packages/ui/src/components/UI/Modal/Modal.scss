@@ -1,0 +1,11 @@
+// Generated with util/create-component.js
+.foo-bar {
+  color: red;
+}
+
+.hideScroll {
+  -ms-overflow-style: none;
+}
+.hideScroll::-webkit-scrollbar {
+  display: none;
+}
