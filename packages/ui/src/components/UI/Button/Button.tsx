@@ -29,7 +29,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     >
       <button
         ref={ref}
-        className={`${className} w-full select-none relative overflow-hidden`}
+        className={`${className} relative w-full select-none overflow-hidden`}
         disabled={props.disabled}
         onClick={props.onClick}
       >

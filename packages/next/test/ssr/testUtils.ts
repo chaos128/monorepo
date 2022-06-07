@@ -6,10 +6,10 @@ const BASE_URL =
     : "https://nosearch.com";
 console.log("BASE_URL => ", BASE_URL);
 
-const read = async (body): Promise<string[]> => {
+const read = async (body: any): Promise<string[]> => {
   let error;
   const documents: string[] = [];
-  body.on("error", (err) => {
+  body.on("error", (err: any) => {
     error = err;
   });
 
@@ -28,7 +28,7 @@ const read = async (body): Promise<string[]> => {
   });
 };
 
-const customFetch = async (path) => {
+const customFetch = async (path: any) => {
   try {
     const result = await fetch(`${BASE_URL + path}`);
     const documents = await read(result.body);

@@ -22,13 +22,13 @@ console.log("==== START TEST SSR ====");
   const popularURL = await getPopularURL();
   console.log("popularURL => ", popularURL);
   const promises = Object.keys(popularURL).map(async (page) => {
-    const urlList = popularURL[page];
+    const urlList = (popularURL as any)[page];
     const assertion =
       process.env.NODE_ENV === "production"
         ? ASSERTION[page]
         : ASSERTION_DEV[page];
     return Promise.all(
-      urlList.map(async (url: string, index) => {
+      urlList.map(async (url: string, index: number) => {
         const response = await customFetch(url);
 
         try {

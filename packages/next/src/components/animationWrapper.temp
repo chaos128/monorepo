@@ -1,0 +1,76 @@
+import { AnimatePresence, LazyMotion } from "framer-motion";
+import { atom } from "jotai";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+const isFirstRenderAtom = atom<boolean>(true);
+
+const AnimationWrapper = ({ children }: { children?: React.ReactNode }) => {
+  const router = useRouter();
+  const [mount, setMount] = useState<boolean>(true);
+  const [dynamicInit, setDynamicInit] = useState<boolean>(false);
+  useEffect(() => {
+    console.log("##mount:", router.pathname);
+    setMount(true);
+    return () => {
+      console.log("##unmount:", router.pathname);
+      setMount(false);
+    };
+  }, [router.pathname, dynamicInit]);
+
+  useEffect(() => {
+    initFramerMotion();
+  }, []);
+
+  const [scrollHeight, setScrollHeight] = useState<number>(0);
+
+  const initFramerMotion = async () => {
+    console.log("init framer-motion");
+    const framerMotion = await import("framer-motion");
+    const nosearchReactComponent = await import("@nosearch/ui");
+
+    AnimatePresence = framerMotion.AnimatePresence;
+    m = framerMotion.m;
+    LazyMotion = framerMotion.LazyMotion;
+    domAnimation = framerMotion.domAnimation;
+    setDynamicInit(true);
+  };
+  if (dynamicInit && AnimatePresence && m && LazyMotion && domAnimation) {
+    return (
+      <LazyMotion features={domAnimation}>
+        <AnimatePresence exitBeforeEnter>
+          <m.div
+            key={`main-${router.pathname}`}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            // transition={{ type: "ease", duration: 0.2 }}
+            // variants={{
+            //   initial: {
+            //     opacity: 0,
+            //     // scale: 0.98,
+            //     // y: 10,
+            //   },
+            //   animate: {
+            //     opacity: 1,
+            //     // scale: 1,
+            //     // y: 0,
+            //   },
+            //   exit: {
+            //     opacity: 0,
+            //     // scale: 0.98,
+            //     // y: 10,
+            //   },
+            // }}
+          >
+            {children}
+          </m.div>
+          {/* {children} */}
+        </AnimatePresence>
+      </LazyMotion>
+    );
+  } else {
+    return <>{children}</>;
+  }
+};
+
+export default AnimationWrapper;

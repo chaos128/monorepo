@@ -7,14 +7,14 @@ export interface IProductSidebarData {
   modelName: string;
   brandName: string;
   image: string;
-  ImageWrapper?: ImageWrapper;
+  ImageWrapper?: JSX.Element;
   pickType: "none" | "best" | "plus" | "premium" | "cost_effective";
   likeCount?: number;
   likeStatus?: boolean;
   compareStatus?: boolean;
-  PayButton: Function;
-  ShareButton: Function;
-  BookmarkButton: Function;
-  CompareButton: Function;
-  SpecButton: Function;
+  PayButton: () => void;
+  ShareButton: () => void;
+  BookmarkButton: () => void;
+  CompareButton: () => void;
+  SpecButton: () => void;
 }

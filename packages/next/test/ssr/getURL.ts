@@ -1,6 +1,6 @@
+import { parseFile } from "@fast-csv/parse";
 import fs from "fs";
 import path from "path";
-import { parseFile } from "@fast-csv/parse";
 
 interface IURLProps {
   productDetail: string[];
@@ -10,7 +10,7 @@ interface IURLProps {
 
 export default function getPopularURL(): Promise<IURLProps> {
   if (!String.prototype.replaceAll) {
-    String.prototype.replaceAll = function (str, newStr) {
+    String.prototype.replaceAll = function (str, newStr: any) {
       if (
         Object.prototype.toString.call(str).toLowerCase() === "[object regexp]"
       ) {
@@ -28,7 +28,7 @@ export default function getPopularURL(): Promise<IURLProps> {
     const guideDetailURL: string[] = [];
     if (existanceCSV) {
       parseFile(filePath)
-        .on("data", (row) => {
+        .on("data", (row: any) => {
           const url = row[0]
             .replaceAll(" ", "%20")
             .split(",")[0]
