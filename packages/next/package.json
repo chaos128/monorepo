@@ -1,6 +1,6 @@
 {
   "name": "@nosearch/next",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@nosearch/ui": "^2.1.9",
+    "@nosearch/ui": "^2.1.10",
     "next": "12.1.6",
     "next-compose-plugins": "^2.2.1",
     "next-transpile-modules": "^9.0.0"
